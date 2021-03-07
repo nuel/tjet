@@ -3,7 +3,7 @@ const io = require('socket.io')({
         origin: '*'
     }
 })
-const server = io.listen(3000)
+const server = io.listen(8443)
 
 server.on('connection', socket => {
     socket.on('chat-message', message => {

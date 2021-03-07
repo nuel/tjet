@@ -38,7 +38,7 @@ tjet.appendChild(tjetForm)
 // End create UI ------------
 
 // Connect to server
-const socket = io(tjet.dataset.server || 'http://localhost:3000')
+const socket = io(tjet.dataset.server || null)
 
 socket.on('chat-message', data => {
     const bubble = document.createElement('li')
