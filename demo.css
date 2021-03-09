@@ -45,8 +45,8 @@ body {
 }
 .tjet-messages {
     list-style: none;
-    padding: 0;
-    margin: 1rem;
+    margin: 0;
+    padding: 0rem 1rem 7rem;
 }
 .tjet-message {
     position: relative;
@@ -60,9 +60,6 @@ body {
     border: 1px solid #aaa;
     border-radius: 0 2rem 2rem 2rem;
     box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25);
-}
-.tjet-message:last-of-type {
-    margin-bottom: 7rem;
 }
 .tjet-message.tjet-sent {
     float: right;
