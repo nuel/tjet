@@ -1,23 +1,23 @@
 const fs = require('fs')
-const secrets = {}
-
-// Load key
-try {
-  secrets.key = fs.readFileSync('.key', 'utf8').split('\n').shift().trim()
-} catch (err) {
-  console.error(err)
-}
-// Load banlist
-refreshBanList()
-
+const he = require('he')
 const io = require('socket.io')({
     cors: {
         origin: '*'
     }
 })
 const server = io.listen(8443)
-
 const clients = {}
+const secrets = {}
+
+// Load key
+try {
+    secrets.key = fs.readFileSync('.key', 'utf8').split('\n').shift().trim()
+} catch (err) {
+    console.error(err)
+}
+
+// Load banlist
+refreshBanList()
 
 server.on('connection', socket => {
     // Check if banned
@@ -60,6 +60,9 @@ server.on('connection', socket => {
                 }
             }
         } else {
+            // Sanitize input
+            message.content = he.encode(message.content)
+
             // If we somehow lost the name of this client, set it now
             if(!clients[socket.client.id].tjetName) {
                 clients[socket.client.id].tjetName = message.name
