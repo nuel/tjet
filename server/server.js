@@ -1,9 +1,8 @@
 const fs = require('fs')
-const path = require('path')
 const secrets = {}
 
 try {
-  secrets.key = fs.readFileSync(path.join(__dirname, '/.key'), 'utf8')
+  secrets.key = fs.readFileSync('.key', 'utf8').split('\n').shift().trim()
 } catch (err) {
   console.error(err)
 }
