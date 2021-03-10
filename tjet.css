@@ -49,6 +49,20 @@
 .tjet-typing-indicator.active {
     display: block;
 }
+.tjet-count {
+    position: absolute;
+    top: -2.5rem;
+    right: 1.5rem;
+}
+.tjet-count::before {
+    display: inline-block;
+    content: '';
+    background: #0f0;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 0.25rem;
+}
 .tjet-messages {
     position: relative;
     list-style: none;

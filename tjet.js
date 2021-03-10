@@ -62,11 +62,13 @@ const tjetInput = h('input.tjet-input', {
     placeholder: tjetLabels.noNamePlaceholder
 })
 const tjetSubmit = h('a.tjet-submit', tjetLabels.setNameLabel)
+const tjetCount = h('div.tjet-count', '0')
 
 // Attach UI
 tjetForm.appendChild(tjetInput)
 tjetForm.appendChild(tjetSubmit)
 tjetForm.appendChild(tjetTypingIndicator)
+tjetForm.appendChild(tjetCount)
 tjet.appendChild(tjetMessages)
 tjet.appendChild(tjetForm)
 
@@ -112,6 +114,9 @@ socket.on('clients', clients => {
     ) {
         tjet.classList.add('tjet-advanced')
     }
+
+    // Count clients
+    tjetCount.innerHTML = Object.keys(clients).length
 
     // Check if people are typing
     tjetCheckTypingIndicators()
