@@ -65,6 +65,12 @@ server.on('connection', socket => {
                 clients[socket.client.id].tjetName = message.name
             }
 
+            // Unless logs are disabled, log message
+            if (!process.argv.includes('--no-log') && !process.argv.includes('-n')) {
+                appendToFile('.log', `${Date.now()} [${socket.handshake.address}] ${message.name}: ${message.content}`)
+            }
+
+            // Broadcast message
             server.emit('chat-message', {
                 message,
                 id: socket.client.id
@@ -97,7 +103,7 @@ function appendToFile(filename, text, callback) {
     const stream = fs.createWriteStream(filename, {'flags': 'a'})
     stream.once('open', () => {
         stream.write(text + '\r\n')
-        callback()
+        if (callback) callback()
     })
 }
 
