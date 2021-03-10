@@ -1,11 +1,14 @@
 const fs = require('fs')
 const secrets = {}
 
+// Load key
 try {
   secrets.key = fs.readFileSync('.key', 'utf8').split('\n').shift().trim()
 } catch (err) {
   console.error(err)
 }
+// Load banlist
+refreshBanList()
 
 const io = require('socket.io')({
     cors: {
@@ -17,6 +20,9 @@ const server = io.listen(8443)
 const clients = {}
 
 server.on('connection', socket => {
+    // Check if banned
+    checkBanned(socket)
+
     // Broadcast client list and own id on login
     clients[socket.client.id] = {}
     socket.emit('remote-id', socket.client.id)
@@ -38,7 +44,15 @@ server.on('connection', socket => {
                         break
                     case 'ban':
                         if (argv[1] && clients[argv[1]]) {
-                            console.log(clients[argv[1]])
+                            server.sockets.sockets.forEach(socket => {
+                                // Check each client if their ID matches, if so, log their address
+                                if (socket.client.id === argv[1]) {
+                                    appendToFile('.banned', socket.handshake.address, () => {
+                                        refreshBanList()
+                                        kick(socket)
+                                    })   
+                                }
+                            })
                         }
                         break
                     default:
@@ -46,6 +60,11 @@ server.on('connection', socket => {
                 }
             }
         } else {
+            // If we somehow lost the name of this client, set it now
+            if(!clients[socket.client.id].tjetName) {
+                clients[socket.client.id].tjetName = message.name
+            }
+
             server.emit('chat-message', {
                 message,
                 id: socket.client.id
@@ -73,3 +92,30 @@ server.on('connection', socket => {
         server.emit('clients', clients)
     })
 })
+
+function appendToFile(filename, text, callback) {
+    const stream = fs.createWriteStream(filename, {'flags': 'a'})
+    stream.once('open', () => {
+        stream.write(text + '\r\n')
+        callback()
+    })
+}
+
+function refreshBanList() {
+    try {
+        secrets.banned = fs.readFileSync('.banned', 'utf8').replace(/\r\n/g,'\n').split('\n')
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+function checkBanned (socket) {
+    if (secrets.banned.includes(socket.handshake.address)) {
+        kick(socket)
+    }
+}
+
+function kick (socket) {
+    socket.emit('banned')
+    socket.disconnect()
+}

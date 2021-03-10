@@ -117,6 +117,12 @@ socket.on('clients', clients => {
     tjetCheckTypingIndicators()
 })
 
+// Receiving a ban
+socket.on('banned', data => {
+    tjet.classList.add('banned')
+    tjetInput.disabled = true
+})
+
 // Check typing indicators
 function tjetCheckTypingIndicators() {
     const typing = []

@@ -4,6 +4,9 @@
     display: flex;
     flex-direction: column;
 }
+#tjet.banned * {
+    cursor: not-allowed;
+}
 .tjet-form {
     position: relative;
     margin: 0;
