@@ -61,8 +61,8 @@ const tjetSubmit = h('a.tjet-submit', tjetLabels.setNameLabel)
 // Attach UI
 tjetForm.appendChild(tjetInput)
 tjetForm.appendChild(tjetSubmit)
+tjetForm.appendChild(tjetTypingIndicator)
 tjet.appendChild(tjetMessages)
-tjet.appendChild(tjetTypingIndicator)
 tjet.appendChild(tjetForm)
 
 // Connect to server
@@ -85,6 +85,7 @@ socket.on('chat-message', data => {
     bubble.appendChild(senderId)
     bubble.appendChild(messageContent)
     tjetMessages.appendChild(bubble)
+    tjetMessages.scrollTop = tjetMessages.scrollHeight
 })
 
 // Client list syncing

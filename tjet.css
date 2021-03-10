@@ -1,0 +1,106 @@
+#tjet, #tjet * { box-sizing: border-box }
+#tjet {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+.tjet-form {
+    position: relative;
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    background: rgba(255, 255, 255, 0.9);
+}
+.tjet-input {
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0.25rem 0.5rem;
+}
+.tjet-submit {
+    border: 1px solid lightblue;
+    padding: 0.25rem 1.25rem 0.3rem 1rem;
+    background: blue;
+    color: #fff;
+    text-align: center;
+    text-transform: lowercase;
+    cursor: pointer;
+    width: 8rem;
+    border-radius: 0 1rem 1rem 0;
+}
+.tjet-no-name .tjet-input {
+    font-style: italic;
+}
+.tjet-no-name .tjet-submit {
+    border-color: lightgreen;
+    background: green;
+}
+.tjet-typing-indicator {
+    display: none;
+    position: absolute;
+    top: -2.5rem;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+.tjet-typing-indicator.active {
+    display: block;
+}
+.tjet-messages {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem;
+    height: 100%;
+    overflow-y: scroll;
+}
+.tjet-message {
+    float: left;
+    clear: both;
+    max-width: 100%;
+    word-wrap: break-word;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem 0.75rem;
+    background: #fafafa;
+    border: 1px solid #aaa;
+    border-radius: 0 2rem 2rem 2rem;
+    box-shadow: 0.3rem 0.3rem 0.75rem rgba(0, 0, 0, 0.18);
+}
+.tjet-message:last-of-type {
+    margin-bottom: 2rem;
+}
+.tjet-message.tjet-sent {
+    float: right;
+    border-radius: 2rem 2rem 0 2rem;
+    padding: 0.75rem 1rem 0.5rem;
+    background: #ededfa;
+    text-align: right;
+}
+.tjet-message-name {
+    display: inline-block;
+}
+.tjet-message-name {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+.tjet-sender-id {
+    display: none;
+    font-family: monospace;
+    font-size: 0.7rem;
+    color: #000;
+    background: #fff;
+    border-radius: 0.2rem;
+}
+.tjet-advanced .tjet-sender-id {
+    display: block;
+}
+.tjet-sent .tjet-message-name {
+    margin-right: 0;
+}
+.tjet-sent .tjet-sender-id {
+    left: 0.25rem;
+    right: auto;
+}
+.tjet-name {
+    font-weight: bold;
+}
