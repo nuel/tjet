@@ -12,8 +12,9 @@ body {
 #tjet {
     position: fixed;
     bottom: 0;
-    right: 1rem;
-    width: 100%;
+    right: 4%;
+    margin-left: 1rem;
+    width: 92%;
     max-width: 25rem;
     height: 70vh;
     background: #fff;
