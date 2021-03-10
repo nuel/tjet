@@ -141,13 +141,15 @@ function tjetCheckTypingIndicators() {
     }
     if (typing.length) {
         tjetTypingIndicator.classList.add('active')
+        // Set a max name length to keep typing indicator short
+        const tr = 20
 
         if (typing.length === 1) {
-            tjetTypingIndicator.innerHTML = `<span class="tjet-name">${tjetGetName(typing[0])}</span> ${tjetLabels.typingSingular}&hellip;`
+            tjetTypingIndicator.innerHTML = `<span class="tjet-name">${tjetGetName(typing[0], tr)}</span> ${tjetLabels.typingSingular}&hellip;`
         } else if (typing.length === 2) {
-            tjetTypingIndicator.innerHTML = `<span class="tjet-name">${tjetGetName(typing[0])}</span> ${tjetLabels.and} <span class="tjet-name">${tjetGetName(typing[1])}</span> ${tjetLabels.typingPlural}&hellip;`
+            tjetTypingIndicator.innerHTML = `<span class="tjet-name">${tjetGetName(typing[0], tr)}</span> ${tjetLabels.and} <span class="tjet-name">${tjetGetName(typing[1], tr)}</span> ${tjetLabels.typingPlural}&hellip;`
         } else if (typing.length === 3) {
-            tjetTypingIndicator.innerHTML = `<span class="tjet-name">${tjetGetName(typing[0])}</span>, <span class="tjet-name">${tjetGetName(typing[1])}</span> ${tjetLabels.and} <span class="tjet-name">${tjetGetName(typing[2])}</span> ${tjetLabels.typingPlural}&hellip;`
+            tjetTypingIndicator.innerHTML = `<span class="tjet-name">${tjetGetName(typing[0], tr)}</span>, <span class="tjet-name">${tjetGetName(typing[1], tr)}</span> ${tjetLabels.and} <span class="tjet-name">${tjetGetName(typing[2], tr)}</span> ${tjetLabels.typingPlural}&hellip;`
         } else {
             tjetTypingIndicator.innerHTML = `<span class="tjet-name">${tjetLabels.typingSeveral}</span> ${tjetLabels.typingPlural}&hellip;`
         }
@@ -210,9 +212,14 @@ function tjetClearNotifications() {
 }
 
 // Helper function to fetch names for IDs
-function tjetGetName(id) {
+function tjetGetName(id, truncate) {
     if (tjetState.clients[id]) {
-        return tjetState.clients[id].tjetName
+        const name = tjetState.clients[id].tjetName
+        console.log(truncate)
+        if (truncate) {
+            return name.length > truncate ? name.slice(0, truncate).trim() + '&hellip;' : name
+        }
+        return name
     }
     return false
 }

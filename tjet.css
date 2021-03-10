@@ -99,6 +99,8 @@
 .tjet-message-name {
     font-weight: bold;
     margin-right: 1rem;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 .tjet-sender-id {
     display: none;
