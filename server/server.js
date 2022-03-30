@@ -2,10 +2,10 @@ const fs = require('fs')
 const he = require('he')
 const io = require('socket.io')({
     cors: {
-        origin: '*'
+        origin: 'rt.nuel.pw'
     }
 })
-const server = io.listen(8443)
+const server = io.listen(9443)
 const clients = {}
 const secrets = {}
 
