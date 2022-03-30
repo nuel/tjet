@@ -101,7 +101,7 @@ socket.on('chat-message', data => {
     messageBubble.appendChild(messageContent)
     message.appendChild(messageBubble)
     tjetMessages.appendChild(message)
-    tjetMessages.scrollTop = tjetMessages.scrollHeight
+    document.body.scrollTop = document.body.scrollHeight
 })
 
 // Client list syncing
@@ -179,6 +179,7 @@ function tjetHandleInput() {
     }
 
     tjetInput.value = ''
+    tjetInput.focus()
     tjetBroadcastTypingIndicator()
 }
 
