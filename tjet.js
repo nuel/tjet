@@ -101,7 +101,7 @@ socket.on('chat-message', data => {
     messageBubble.appendChild(messageContent)
     message.appendChild(messageBubble)
     tjetMessages.appendChild(message)
-    document.body.scrollTop = document.body.scrollHeight
+    window.scrollTo(0, document.body.scrollHeight)
 })
 
 // Client list syncing
