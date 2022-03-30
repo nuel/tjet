@@ -1,4 +1,1 @@
 Deny from all
-<Files /node_modules/socket.io/client-dist/socket.io.min.js>
-Allow from all
-</FilesMatch>
