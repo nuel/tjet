@@ -7,23 +7,16 @@ body {
     height: 100%;
 }
 body {
-    background: #fff url('https://nuel.pw/plaatjes/lucht.jpg') center / cover;
+    background:rgba(0, 0, 69, 1)
 }
-#tjet {
+.backdrop {
+    background: #fff url('https://nuel.pw/plaatjes/finger.gif') center / cover;
+    filter: blur(155px);
     position: fixed;
-    bottom: 0;
-    right: 4%;
-    margin-left: 1rem;
-    width: 92%;
-    max-width: 25rem;
-    height: 70vh;
-    background: #fff;
-    border: 1px solid #aaa;
-    box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.25);
-}
-#tjet .tjet-messages {
-    background: linear-gradient(#e0e0e0, #f0f0f0);
-}
-#tjet .tjet-form {
-    margin-top: 0.5rem;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 200vh;
+    transform: translate(-50vw, -50vh);
+    z-index: -1;
 }

@@ -82,23 +82,25 @@ socket.on('remote-id', data => {
 
 // Handle incoming messages
 socket.on('chat-message', data => {
-    const bubble = h('li.tjet-message')
+    const message = h('li.tjet-message')
     const messageName = h('div.tjet-message-name', data.message.name)
     const senderId = h('div.tjet-sender-id', data.id)
     const messageContent = h('div.tjet-message-content', data.message.content)
+    const messageBubble = h('div')
 
     // Did we send this?
     if (tjetState.remoteID === data.id) {
-        bubble.classList.add('tjet-sent')
+        message.classList.add('tjet-sent')
     } else {
         // If not, send a notification
         tjetSendNotification()
     }
 
-    bubble.appendChild(messageName)
-    bubble.appendChild(senderId)
-    bubble.appendChild(messageContent)
-    tjetMessages.appendChild(bubble)
+    message.appendChild(messageName)
+    message.appendChild(senderId)
+    messageBubble.appendChild(messageContent)
+    message.appendChild(messageBubble)
+    tjetMessages.appendChild(message)
     tjetMessages.scrollTop = tjetMessages.scrollHeight
 })
 
@@ -215,7 +217,6 @@ function tjetClearNotifications() {
 function tjetGetName(id, truncate) {
     if (tjetState.clients[id]) {
         const name = tjetState.clients[id].tjetName
-        console.log(truncate)
         if (truncate) {
             return name.length > truncate ? name.slice(0, truncate).trim() + '&hellip;' : name
         }

@@ -2,7 +2,7 @@ const fs = require('fs')
 const he = require('he')
 const io = require('socket.io')({
     cors: {
-        origin: 'rt.nuel.pw'
+        origin: '*'
     }
 })
 const server = io.listen(9443)
