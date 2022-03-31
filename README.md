@@ -15,7 +15,7 @@ tjet is a very simple real time chat library, using socket.io. It includes basic
 
 ## setting up the server
 Think of a mod password and save it to `server/.key`.
-Then, in the server folder, do `npm i` then `npm start`. tjet listens by default on port 9443.
+Then, in the server folder, do `npm i` then `npm start`. tjet listens on port 9443.
 
 ## setting up the client
 Attach `tjet.css` and `tjet.js` to your page. The [socket.io client library](https://cdnjs.com/libraries/socket.io) should also be included. Then add a div somewhere with the id `#tjet`. This div can be styled however you want.
