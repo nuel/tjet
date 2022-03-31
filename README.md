@@ -1,7 +1,7 @@
 # tjet
 🗯 Very Simple Messaging
 
-tjet is a very simple real time chat library, using socket.io. It includes basic safety features like logging and IP banning, without going overboard on features. See the demo at [rt.nuel.pw](https://rt.nuel.pw)
+tjet is a very simple real time chat library, using socket.io. It includes basic safety features like logging and IP banning, without going overboard on bells and whistles. See the demo at [rt.nuel.pw &rarr;](https://rt.nuel.pw)
 
 ## included in the box with tjet
 - typing indicators
