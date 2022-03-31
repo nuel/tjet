@@ -47,10 +47,10 @@ server.on('connection', socket => {
                             server.sockets.sockets.forEach(socket => {
                                 // Check each client if their ID matches, if so, log their address
                                 if (socket.client.id === argv[1]) {
-                                    appendToFile('.banned', socket.handshake.address, () => {
+                                    appendToFile('.banned', socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address, () => {
                                         refreshBanList()
                                         kick(socket)
-                                    })   
+                                    })
                                 }
                             })
                         }
@@ -70,7 +70,7 @@ server.on('connection', socket => {
 
             // Unless logs are disabled, log message
             if (!process.argv.includes('--no-log') && !process.argv.includes('-n')) {
-                appendToFile('.log', `${Date.now()} [${socket.handshake.address}] ${message.name}: ${message.content}`)
+                appendToFile('.log', `${Date.now()} [${socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address}] ${message.name}: ${message.content}`)
             }
 
             // Broadcast message
@@ -119,7 +119,7 @@ function refreshBanList() {
 }
 
 function checkBanned (socket) {
-    if (secrets.banned.includes(socket.handshake.address)) {
+    if (secrets.banned.includes(socket.handshake.headers['x-forwarded-for'] || socket.handshake.address.address)) {
         kick(socket)
     }
 }
