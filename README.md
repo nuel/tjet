@@ -3,7 +3,7 @@
 
 ![Screenshot 2022-03-31 175110](https://user-images.githubusercontent.com/66974415/161097233-abcb5a25-939c-4e75-8c61-1d6d53008fe1.jpg)
 
-tjet is a very simple real time chat library, using socket.io. It includes basic safety features like logging and IP banning, without going overboard on bells and whistles. See the demo at [rt.nuel.pw &rarr;](https://rt.nuel.pw)
+tjet is a very simple real time chat library, using socket.io. It includes basic safety features like logging and IP banning, without going overboard on bells and whistles. See the demo at [realtime.nuel.cloud &rarr;](https://realtime.nuel.cloud)
 
 ## included in the box with tjet
 - typing indicators
@@ -14,7 +14,7 @@ tjet is a very simple real time chat library, using socket.io. It includes basic
 - cute notification sound
 
 ## setting up the server
-Think of a mod password and save it to `server/.key`.
+Think of a mod password (or [generate one](https://1password.com/password-generator/)) and save it to `server/.key`.
 Then, in the server folder, do `npm i` then `npm start`. tjet listens on port 9443.
 
 ## setting up the client
