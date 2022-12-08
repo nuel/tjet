@@ -26,7 +26,7 @@ By default, tjet tries to connect to the websocket on the same domain the page i
 ```
 
 ## moderation
-Type `/mod YOUR_KEY` in the chat to enter mod mode. (Replace `YOUR_KEY` with the contents of `server/.key`) This will unhide user IDs and authenticate you to ban users.
+Type `/mod YOUR_KEY` in the chat to enter mod mode. (Replace `YOUR_KEY` with the contents of `server/.key`) This will unhide user IDs and authorize you to ban users.
 
 To ban a user, type `/ban USER_ID` (Replace `USER_ID` with their ID.) This will log their IP address to `server/.banned` and disconnect them from the server whenever they attempt to join. On the client side, their interface will be disabled, so they'll know they've been banned.
 
