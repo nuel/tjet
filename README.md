@@ -3,7 +3,7 @@
 
 ![Screenshot 2022-03-31 175110](https://user-images.githubusercontent.com/66974415/161097233-abcb5a25-939c-4e75-8c61-1d6d53008fe1.jpg)
 
-tjet is a very simple real time chat library, using socket.io. It includes basic safety features like logging and IP banning, without going overboard on bells and whistles. See the demo at [realtime.nuel.cloud &rarr;](https://realtime.nuel.cloud)
+tjet is a very simple real time chat library, using socket.io. It includes basic safety features like logging and IP banning, without going overboard on bells and whistles.
 
 ## included in the box with tjet
 - typing indicators
